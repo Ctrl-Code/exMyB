@@ -17,7 +17,6 @@ function Blogs(props) {
     useEffect(() => {
         getBlogs().then(res => {
             let { data } = res;
-            console.log('the response is', res.data);
             setBlogs(data);
         })
     }, [])
@@ -49,7 +48,7 @@ function Blogs(props) {
 
     return <div>
         {
-            blogs.map((blog, index) => <ShowBlog key={blog?.id || index} data={blog} onClick={() => showBlog(index)} />)
+            blogs.map((blog, index) => <ShowBlog key={blog?.id || index} data={blog} onClick={() => showBlog(blog?.id)} />)
         }
     </div>
 }

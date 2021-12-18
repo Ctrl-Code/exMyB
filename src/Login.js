@@ -20,7 +20,7 @@ function Login(props) {
 
                 if (token) {
                     localStorage.setItem("token", token);
-                    const { redirect, blogIndex } = location.state;
+                    const { redirect, blogIndex } = location?.state || {};
 
                     // we want to redirect to particular post
                     if (redirect)

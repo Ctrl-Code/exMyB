@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import getBlogs from "./APIs/getBlogs";
 
 function IndividualBlog(props) {
 
     const [blog, setBlog] = useState({});
-
-    console.log('the props are', props);
+    const location = useLocation();
 
     useEffect(() => {
-        getBlogs(undefined, 1).then(res => {
+
+        // since pathname = "/blogs/5"
+        let blogId = location.pathname.split('/')[2];
+
+        getBlogs(undefined, blogId).then(res => {
             const { data } = res;
             if (data)
                 setBlog(data);
